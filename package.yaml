@@ -1,0 +1,4 @@
+# Toit Package.
+newton_raphson:
+  url: github.com/toitware/toit-newton-raphson
+  version: ^1.0.0

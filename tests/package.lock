@@ -1,0 +1,9 @@
+prefixes:
+  resistance_to_temperature: ..
+packages:
+  ..:
+    path: ..
+    prefixes:
+      newton_raphson: newton
+  newton:
+    path: ../../toit-newton-raphson
