@@ -4,6 +4,7 @@ packages:
   ..:
     path: ..
     prefixes:
-      newton_raphson: newton
-  newton:
-    path: ../../toit-newton-raphson
+      newton_raphson: toit-newton-raphson
+  toit-newton-raphson:
+    url: github.com/toitware/toit-newton-raphson
+    version: 1.0.0
