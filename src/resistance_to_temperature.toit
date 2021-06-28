@@ -25,7 +25,7 @@ Calculates the temperature in degrees C, assuming an alpha of
   print temp  // Print temperature in degrees C.
 ```
 */
-temperature_cvd_751 resistance/num resistance_zero/num -> num:
+temperature_cvd_751 resistance/num resistance_zero/num -> float:
   // We use the Callendar-Van Dusen equation:
   // resistance / resistance_zero = 1.0 + aT + bT² -100cT³ + cT⁴
   // a, b and c are derived from the standard IEC 751 alpha above:
@@ -53,7 +53,7 @@ Calculates the resistance ratio r/r_0 between the platinum
   with an alpha of 0.00385055, corresponding to the IEC 751
   standard for almost pure platinum resistors.
 */
-ratio_cvd_751 degrees_c/num -> num:
+ratio_cvd_751 degrees_c/num -> float:
   // resistance / resistance_zero = 1.0 + aT + bT² -100cT³ + cT⁴
   // a, b and c are derived from the standard IEC 751 alpha above:
   // c is zero if the temperature is above zero degrees C.
@@ -83,7 +83,7 @@ For calibration purposes.  Given a measured resistance at an
   print r_0  // Print R0 for this device, in Ohms.
 ```
 */
-r0_cvd_751 sample_resistance/num sample_degrees_c/num -> num:
+r0_cvd_751 sample_resistance/num sample_degrees_c/num -> float:
   ratio := ratio_cvd_751 sample_degrees_c
   // r_sample/r_0 = ratio
   return sample_resistance / ratio
