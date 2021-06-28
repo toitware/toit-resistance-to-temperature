@@ -1,0 +1,10 @@
+prefixes:
+  resistance_to_temperature: ..
+packages:
+  ..:
+    path: ..
+    prefixes:
+      newton_raphson: toit-newton-raphson
+  toit-newton-raphson:
+    url: github.com/toitware/toit-newton-raphson
+    version: 1.0.0
