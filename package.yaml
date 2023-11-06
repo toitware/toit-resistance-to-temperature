@@ -1,3 +1,5 @@
+name: resistance_to_temperature
+description: Calculation of temperature from resistance.
 dependencies:
   newton_raphson:
     url: github.com/toitware/toit-newton-raphson
