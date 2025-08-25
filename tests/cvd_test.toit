@@ -3,14 +3,14 @@
 // found in the LICENSE file.
 
 import math
-import resistance_to_temperature show *
+import resistance-to-temperature show *
 
 main:
-  print "Temp for ratio 1:1: $(temperature_cvd_751 100.0 100.0)"
-  print "Ratio for temperature 0: $(ratio_cvd_751 0.0)"
+  print "Temp for ratio 1:1: $(temperature-cvd-751 100.0 100.0)"
+  print "Ratio for temperature 0: $(ratio-cvd-751 0.0)"
   // The data sheet contains a table for a resistor that is exactly
   // 100 Ohms at 0 degrees C.
-  R_ZERO := 100.0
+  R-ZERO := 100.0
   REFERENCE ::= [
     [18.52, -200.0],
     [29.22, -175.0],
@@ -25,8 +25,8 @@ main:
   REFERENCE.do:
     resistance := it[0]
     temperature := it[1]
-    near_enough resistance / R_ZERO (ratio_cvd_751 temperature)
-    near_enough temperature (temperature_cvd_751 resistance R_ZERO)
+    near-enough resistance / R-ZERO (ratio-cvd-751 temperature)
+    near-enough temperature (temperature-cvd-751 resistance R-ZERO)
 
   // Everything between about 10 ohms and 700 ohms has a graph that is
   // well-behaved enough for Newton-Raphson to work (up to about 1900 degrees).
@@ -36,10 +36,10 @@ main:
   2000.repeat:
     if it % 100 == 0: print it
     resistance := math.PI / 10.0 * (it + 30)
-    temperature_cvd_751 resistance 100.0
+    temperature-cvd-751 resistance 100.0
 
 // The table has only two digits after the decimal place, so we can't expect to
 // do better than that.
-near_enough value1 value2:
+near-enough value1 value2:
   if (value1 - value2).abs > 0.02:
     throw "Not close enough: $(%0.3f value1) $(%0.3f value2)"
