@@ -3,23 +3,23 @@
 // be found in the EXAMPLES_LICENSE file.
 
 import math
-import resistance_to_temperature show *
+import resistance-to-temperature show *
 
 main:
   // We measured our nominally-100-Ohm resistor at 21 degrees, and it had a
   // resistance of 99 Ohms.  This may have happened as part of the
   // manufacturing process, so it should be a per-device piece of configuation.
   // Here we will just hard-code the value.
-  R0 ::= r0_cvd_751 99.0 21.0
+  R0 ::= r0-cvd-751 99.0 21.0
 
   // We measured a resistance of 101 Ohms in actual use.  Convert this
   // to a temperature.
-  temp := temperature_cvd_751 101.0 R0
+  temp := temperature-cvd-751 101.0 R0
 
   print "$(%.1f temp)C"
 
   for r := 90; r < 110; r++:
-    temp = temperature_cvd_751 r.to_float R0
+    temp = temperature-cvd-751 r.to-float R0
     print "$(%3d r) Ohm:  $(%4.1f temp)C"
 
   // Output:

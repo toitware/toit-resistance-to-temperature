@@ -4,3 +4,7 @@ dependencies:
   newton_raphson:
     url: github.com/toitware/toit-newton-raphson
     version: ^1.0.0
+
+environment:
+  sdk: ^2.0.0-alpha.180
+
