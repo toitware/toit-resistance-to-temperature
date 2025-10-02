@@ -6,7 +6,7 @@ import math
 import newton-raphson
 
 /**
-Tools to calculate temperature from resistance
+Tools to calculate temperature from resistance.
 */
 
 A_ ::= 3.9083e-3
@@ -14,10 +14,13 @@ B_ ::= -5.775e-7
 C_ ::= -4.18301e-12
 
 /**
-Calculates the temperature in degrees C, assuming an alpha of
+Calculates the temperature in degrees C.
+
+Assumes an alpha of
   0.00385055, corresponding to the IEC 751 standard for almost
   pure platinum resistors.  Uses the Callendar-Van Dusen formula.
-#Examples
+
+# Examples
 ```
   R0 ::= 100  // Assume that we have a nominal 100 Ohm resistor.
   r := 99     // The DAC measured a resistance of 99 Ohm.
@@ -49,7 +52,9 @@ temperature-cvd-751 resistance/num resistance-zero/num -> float:
 /**
 Calculates the resistance ratio r/r_0 between the platinum
   resistor at the given temperature and the same resistor
-  at zero degrees C.  Uses the Callendar-Van Dusen formula
+  at zero degrees C.
+
+Uses the Callendar-Van Dusen formula
   with an alpha of 0.00385055, corresponding to the IEC 751
   standard for almost pure platinum resistors.
 */
@@ -67,7 +72,9 @@ ratio-cvd-751 degrees-c/num -> float:
   return result
 
 /**
-For calibration purposes.  Given a measured resistance at an
+For calibration purposes.
+
+Given a measured resistance at an
   externally measured temperature, it calculates what the
   resistance of your resistor would be at zero degrees C.
   Uses the Callendar-Van Dusen formula with an alpha of

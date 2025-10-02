@@ -7,4 +7,6 @@ packages:
       newton_raphson: toit-newton-raphson
   toit-newton-raphson:
     url: github.com/toitware/toit-newton-raphson
+    name: newton_raphson
     version: 1.0.0
+    hash: 0eee3b33385c777f4677955e626dc9ac2f4345d5

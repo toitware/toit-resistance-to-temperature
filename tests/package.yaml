@@ -1,0 +1,3 @@
+dependencies:
+  resistance_to_temperature:
+    path: ..
