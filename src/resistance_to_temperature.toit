@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import math
-import newton_raphson
+import newton-raphson
 
 /**
 Tools to calculate temperature from resistance
@@ -25,7 +25,7 @@ Calculates the temperature in degrees C, assuming an alpha of
   print temp  // Print temperature in degrees C.
 ```
 */
-temperature_cvd_751 resistance/num resistance_zero/num -> float:
+temperature-cvd-751 resistance/num resistance-zero/num -> float:
   // We use the Callendar-Van Dusen equation:
   // resistance / resistance_zero = 1.0 + aT + bT² -100cT³ + cT⁴
   // a, b and c are derived from the standard IEC 751 alpha above:
@@ -40,9 +40,9 @@ temperature_cvd_751 resistance/num resistance_zero/num -> float:
       + 2.0 * B_ * t
       - 300.0 * c * t * t
       + 4.0 * c * t * t * t
-  temperature := newton_raphson.solve
-    --goal= resistance / resistance_zero
-    --function=: | t/num | ratio_cvd_751 t
+  temperature := newton-raphson.solve
+    --goal= resistance / resistance-zero
+    --function=: | t/num | ratio-cvd-751 t
     --derivative=derivative
   return temperature
 
@@ -53,17 +53,17 @@ Calculates the resistance ratio r/r_0 between the platinum
   with an alpha of 0.00385055, corresponding to the IEC 751
   standard for almost pure platinum resistors.
 */
-ratio_cvd_751 degrees_c/num -> float:
+ratio-cvd-751 degrees-c/num -> float:
   // resistance / resistance_zero = 1.0 + aT + bT² -100cT³ + cT⁴
   // a, b and c are derived from the standard IEC 751 alpha above:
   // c is zero if the temperature is above zero degrees C.
-  c ::= degrees_c < 0 ? C_ : 0
+  c ::= degrees-c < 0 ? C_ : 0
   result := 1.0
-    + A_ * degrees_c
-    + B_ * degrees_c * degrees_c
-  if degrees_c < 0:
-    cubed := degrees_c * degrees_c * degrees_c
-    result += C_ * cubed * (degrees_c - 100.0)
+    + A_ * degrees-c
+    + B_ * degrees-c * degrees-c
+  if degrees-c < 0:
+    cubed := degrees-c * degrees-c * degrees-c
+    result += C_ * cubed * (degrees-c - 100.0)
   return result
 
 /**
@@ -83,7 +83,7 @@ For calibration purposes.  Given a measured resistance at an
   print r_0  // Print R0 for this device, in Ohms.
 ```
 */
-r0_cvd_751 sample_resistance/num sample_degrees_c/num -> float:
-  ratio := ratio_cvd_751 sample_degrees_c
+r0-cvd-751 sample-resistance/num sample-degrees-c/num -> float:
+  ratio := ratio-cvd-751 sample-degrees-c
   // r_sample/r_0 = ratio
-  return sample_resistance / ratio
+  return sample-resistance / ratio
